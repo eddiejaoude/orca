@@ -2,9 +2,9 @@ import { existsSync, readFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { resolveDevinCliDataDir } from '../devin/devin-cli-data-dir'
 
-// Why: the Devin CLI stores credentials.toml next to its cli data dir
-// (%APPDATA%\devin\credentials.toml vs %APPDATA%\devin\cli on Windows;
-// $XDG_DATA_HOME/devin/credentials.toml on posix).
+// Why: the Devin CLI writes credentials.toml one level above its cli/ data dir
+// — <data>/devin/credentials.toml next to <data>/devin/cli, where <data> is
+// $XDG_DATA_HOME (or ~/.local/share) on posix and %APPDATA% on Windows.
 export function getDevinCredentialsPath(): string {
   return join(dirname(resolveDevinCliDataDir()), 'credentials.toml')
 }

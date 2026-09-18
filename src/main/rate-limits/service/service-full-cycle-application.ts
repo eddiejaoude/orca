@@ -230,12 +230,6 @@ export abstract class RateLimitServiceFullCycleApplication extends RateLimitServ
             status: 'error'
           } satisfies ProviderRateLimits)
     this.trackActiveFailureStreak('devin', devin)
-    // Why: 'unavailable' here means a signed-in plan with no quota windows
-    // (missing credentials already leave the probe false). Clearing the
-    // configured signal keeps a credit-billed plan from pinning a "--" slot.
-    if (devin.status === 'unavailable') {
-      this.devinAuthConfigured = false
-    }
     this.updateState({
       ...this.state,
       devin: this.applyStalePolicy(devin, previousState.devin)

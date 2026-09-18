@@ -171,6 +171,16 @@ describe('fetchDevinRateLimits', () => {
     expect(body.includes('3000.6.2')).toBe(true)
   })
 
+  // A 307/308 replays the POST body — which carries the session token — at the
+  // redirect target, so the request must fail instead of following one.
+  it('refuses to follow redirects', async () => {
+    files.credentials = credentialsToml()
+    netFetchMock.mockResolvedValueOnce(protoResponse(userStatusResponse(quotaPlanStatus())))
+
+    await fetchDevinRateLimits()
+    expect(netFetchMock.mock.calls[0][1].redirect).toBe('error')
+  })
+
   it('normalizes a session token missing the devin-session-token prefix', async () => {
     files.credentials = 'windsurf_api_key = "raw-token"\n'
     netFetchMock.mockResolvedValueOnce(protoResponse(userStatusResponse(quotaPlanStatus())))

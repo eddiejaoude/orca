@@ -4270,7 +4270,7 @@
           "444585cb41": "with data",
           "ecb0cd8a4c": "enabled -",
           "33f7b043d2": "Providers",
-          "60002bb22f": "No local Claude, Codex, or OpenCode usage found yet. The overview will populate after the next agent session writes token logs.",
+          "60002bb22f": "No local Claude, Codex, Devin, or OpenCode usage found yet. The overview will populate after the next agent session writes token logs.",
           "70f36452d4": "Cache share",
           "327603fe8b": "Active days",
           "0eaf937335": "Est. cost",
@@ -9010,10 +9010,10 @@
             "3a9b6d2c4e": "api key",
             "5d8f1a3b7c": "china",
             "7e2a4b8c1d": "overseas",
-            "7b1e0d4a95": "Devin Usage",
-            "2c58f9a0e3": "Sign-in via Devin CLI (devin login) for daily and weekly quota usage, plan, and tier.",
-            "9a03e7c5b1": "devin",
-            "4f8d2b6e07": "cognition"
+            "title": "Devin Usage",
+            "description": "Sign-in via Devin CLI (devin login) for daily and weekly quota usage, plan, and tier.",
+            "keywordDevin": "devin",
+            "keywordCognition": "cognition"
           }
         },
         "advanced": {
@@ -12008,25 +12008,25 @@
           "strong": "Strong"
         },
         "DevinAccountsSection": {
-          "7c1d40ab92": "Resets {{when}}",
-          "5be04c1f83": "Devin reported no quota percentage for this account.",
-          "1f7c0a9e34": "Devin",
-          "c8a2f61d05": "Shows daily and weekly quota from your Devin CLI sign-in (credentials file written by devin login).",
-          "9d3b47e0c6": "Devin CLI docs",
-          "4a0e8c62bd": "Loading…",
-          "2e6b91d7af": "Signed in",
-          "b35f0d8a71": "Signed in. Orca reads the Devin CLI session stored on disk.",
-          "f019c5b2e8": "Session expired. Run devin on the computer running Orca and wait for it to start. If prompted, complete sign-in, then click Refresh usage.",
-          "6d84a1fc37": "Plan: {{plan}}",
-          "a7f2c40be9": "Not signed in to Devin CLI",
-          "0c6ea93bf4": "In a terminal, run devin login, then click Refresh usage here.",
-          "8b52d7e6c0": "Refresh usage",
-          "3fa0b8d24c": "Daily quota used",
-          "e21d6bac05": "Same daily quota percentage as devin auth status in the terminal.",
-          "d59e13c7a2": "Weekly quota used",
-          "47b6e0f9d1": "Same weekly quota percentage as devin auth status in the terminal.",
-          "bf7130e5a8": "Devin usage",
-          "9e40c6b1d3": "Why Devin quota is unknown for this account."
+          "resetsAt": "Resets {{when}}",
+          "unknownUsageReason": "Devin reported no quota percentage for this account.",
+          "sectionTitle": "Devin",
+          "sectionDescription": "Shows daily and weekly quota from your Devin CLI sign-in (credentials file written by devin login).",
+          "cliDocsLink": "Devin CLI docs",
+          "loading": "Loading…",
+          "signedIn": "Signed in",
+          "signedInDetail": "Signed in. Orca reads the Devin CLI session stored on disk.",
+          "sessionExpired": "Session expired. Run devin on the computer running Orca and wait for it to start. If prompted, complete sign-in, then click Refresh usage.",
+          "plan": "Plan: {{plan}}",
+          "notSignedIn": "Not signed in to Devin CLI",
+          "notSignedInHint": "In a terminal, run devin login, then click Refresh usage here.",
+          "refreshUsage": "Refresh usage",
+          "dailyQuotaTitle": "Daily quota used",
+          "dailyQuotaDescription": "Same daily quota percentage as devin auth status in the terminal.",
+          "weeklyQuotaTitle": "Weekly quota used",
+          "weeklyQuotaDescription": "Same weekly quota percentage as devin auth status in the terminal.",
+          "unknownUsageTitle": "Devin usage",
+          "unknownUsageDescription": "Why Devin quota is unknown for this account."
         }
       },
       "right": {

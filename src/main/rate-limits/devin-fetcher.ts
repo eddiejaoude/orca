@@ -137,6 +137,9 @@ async function fetchUserStatus(
       Accept: '*/*'
     },
     body: Buffer.from(requestBody),
+    // Why: the body carries the session token — a 307/308 must not forward it
+    // to another origin.
+    redirect: 'error',
     signal: requestSignal
   })
   if (res.status === 401 || res.status === 403) {

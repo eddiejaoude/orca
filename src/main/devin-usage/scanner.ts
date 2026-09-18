@@ -35,10 +35,20 @@ export async function scanDevinUsageFiles(
       onFilesScanned?.(1)
       continue
     }
-    const events = (await parseDevinUsageFile(file.path))
-      .map((event) => attributeDevinUsageEvent(event, resolveWorktree))
-      .filter((event) => event !== null)
-    const aggregate = devinUsageAggregation.aggregate(events)
+    let aggregate: { sessions: DevinUsageSession[]; dailyAggregates: DevinUsageDailyAggregate[] }
+    try {
+      const events = (await parseDevinUsageFile(file.path))
+        .map((event) => attributeDevinUsageEvent(event, resolveWorktree))
+        .filter((event) => event !== null)
+      aggregate = devinUsageAggregation.aggregate(events)
+    } catch (error) {
+      // Why: skip corrupt transcripts without caching them so a later scan retries once the file is rewritten.
+      console.warn(
+        `[devin-usage] skipping unreadable transcript: ${error instanceof Error ? error.message : String(error)}`
+      )
+      onFilesScanned?.(1)
+      continue
+    }
     processedFiles.push({
       path: file.path,
       mtimeMs: file.mtimeMs,

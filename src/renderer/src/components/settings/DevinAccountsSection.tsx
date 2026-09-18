@@ -36,7 +36,7 @@ function DevinQuotaSetting({
         {quotaWindow.resetDescription ? (
           <span className="text-muted-foreground">
             {translate(
-              'auto.components.settings.DevinAccountsSection.7c1d40ab92',
+              'auto.components.settings.DevinAccountsSection.resetsAt',
               'Resets {{when}}',
               { when: quotaWindow.resetDescription }
             )}
@@ -101,7 +101,7 @@ export function DevinAccountsSection(): React.JSX.Element {
     (devinUsage?.status === 'unavailable' || devinUsage?.status === 'error')
       ? (devinUsage.error ??
         translate(
-          'auto.components.settings.DevinAccountsSection.5be04c1f83',
+          'auto.components.settings.DevinAccountsSection.unknownUsageReason',
           'Devin reported no quota percentage for this account.'
         ))
       : null
@@ -112,11 +112,11 @@ export function DevinAccountsSection(): React.JSX.Element {
         <div className="space-y-1">
           <h3 className="flex items-center gap-2 text-sm font-semibold">
             <AgentIcon agent="devin" size={16} />
-            {translate('auto.components.settings.DevinAccountsSection.1f7c0a9e34', 'Devin')}
+            {translate('auto.components.settings.DevinAccountsSection.sectionTitle', 'Devin')}
           </h3>
           <p className="text-xs text-muted-foreground">
             {translate(
-              'auto.components.settings.DevinAccountsSection.c8a2f61d05',
+              'auto.components.settings.DevinAccountsSection.sectionDescription',
               'Shows daily and weekly quota from your Devin CLI sign-in (credentials file written by devin login).'
             )}
           </p>
@@ -127,7 +127,7 @@ export function DevinAccountsSection(): React.JSX.Element {
           rel="noopener noreferrer"
           className="inline-flex items-center gap-1 text-xs text-muted-foreground hover:text-foreground"
         >
-          {translate('auto.components.settings.DevinAccountsSection.9d3b47e0c6', 'Devin CLI docs')}
+          {translate('auto.components.settings.DevinAccountsSection.cliDocsLink', 'Devin CLI docs')}
           <ExternalLink className="size-3" />
         </a>
       </div>
@@ -147,32 +147,29 @@ export function DevinAccountsSection(): React.JSX.Element {
         <div className="min-w-0 flex-1 space-y-1">
           {loading ? (
             <p className="text-xs text-muted-foreground">
-              {translate('auto.components.settings.DevinAccountsSection.4a0e8c62bd', 'Loading…')}
+              {translate('auto.components.settings.DevinAccountsSection.loading', 'Loading…')}
             </p>
           ) : signedIn ? (
             <>
               <p className="truncate text-xs font-medium">
                 {status?.email ??
-                  translate(
-                    'auto.components.settings.DevinAccountsSection.2e6b91d7af',
-                    'Signed in'
-                  )}
+                  translate('auto.components.settings.DevinAccountsSection.signedIn', 'Signed in')}
               </p>
               <p className="text-xs text-muted-foreground">
                 {tokenFresh
                   ? translate(
-                      'auto.components.settings.DevinAccountsSection.b35f0d8a71',
+                      'auto.components.settings.DevinAccountsSection.signedInDetail',
                       'Signed in. Orca reads the Devin CLI session stored on disk.'
                     )
                   : translate(
-                      'auto.components.settings.DevinAccountsSection.f019c5b2e8',
+                      'auto.components.settings.DevinAccountsSection.sessionExpired',
                       'Session expired. Run devin on the computer running Orca and wait for it to start. If prompted, complete sign-in, then click Refresh usage.'
                     )}
               </p>
               {plan ? (
                 <p className="text-xs text-muted-foreground">
                   {translate(
-                    'auto.components.settings.DevinAccountsSection.6d84a1fc37',
+                    'auto.components.settings.DevinAccountsSection.plan',
                     'Plan: {{plan}}',
                     { plan }
                   )}
@@ -183,13 +180,13 @@ export function DevinAccountsSection(): React.JSX.Element {
             <>
               <p className="text-xs font-medium">
                 {translate(
-                  'auto.components.settings.DevinAccountsSection.a7f2c40be9',
+                  'auto.components.settings.DevinAccountsSection.notSignedIn',
                   'Not signed in to Devin CLI'
                 )}
               </p>
               <p className="text-xs text-muted-foreground">
                 {translate(
-                  'auto.components.settings.DevinAccountsSection.0c6ea93bf4',
+                  'auto.components.settings.DevinAccountsSection.notSignedInHint',
                   'In a terminal, run devin login, then click Refresh usage here.'
                 )}
               </p>
@@ -212,18 +209,18 @@ export function DevinAccountsSection(): React.JSX.Element {
           ) : (
             <RefreshCw className="size-3" />
           )}
-          {translate('auto.components.settings.DevinAccountsSection.8b52d7e6c0', 'Refresh usage')}
+          {translate('auto.components.settings.DevinAccountsSection.refreshUsage', 'Refresh usage')}
         </Button>
       </div>
 
       {dailyWindow ? (
         <DevinQuotaSetting
           title={translate(
-            'auto.components.settings.DevinAccountsSection.3fa0b8d24c',
+            'auto.components.settings.DevinAccountsSection.dailyQuotaTitle',
             'Daily quota used'
           )}
           description={translate(
-            'auto.components.settings.DevinAccountsSection.e21d6bac05',
+            'auto.components.settings.DevinAccountsSection.dailyQuotaDescription',
             'Same daily quota percentage as devin auth status in the terminal.'
           )}
           quotaWindow={dailyWindow}
@@ -232,11 +229,11 @@ export function DevinAccountsSection(): React.JSX.Element {
       {weeklyWindow ? (
         <DevinQuotaSetting
           title={translate(
-            'auto.components.settings.DevinAccountsSection.d59e13c7a2',
+            'auto.components.settings.DevinAccountsSection.weeklyQuotaTitle',
             'Weekly quota used'
           )}
           description={translate(
-            'auto.components.settings.DevinAccountsSection.47b6e0f9d1',
+            'auto.components.settings.DevinAccountsSection.weeklyQuotaDescription',
             'Same weekly quota percentage as devin auth status in the terminal.'
           )}
           quotaWindow={weeklyWindow}
@@ -245,11 +242,11 @@ export function DevinAccountsSection(): React.JSX.Element {
       {unknownUsageReason ? (
         <SearchableSetting
           title={translate(
-            'auto.components.settings.DevinAccountsSection.bf7130e5a8',
+            'auto.components.settings.DevinAccountsSection.unknownUsageTitle',
             'Devin usage'
           )}
           description={translate(
-            'auto.components.settings.DevinAccountsSection.9e40c6b1d3',
+            'auto.components.settings.DevinAccountsSection.unknownUsageDescription',
             'Why Devin quota is unknown for this account.'
           )}
           keywords={DEVIN_USAGE_KEYWORDS}
